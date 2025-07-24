@@ -12,11 +12,11 @@ int main (){
     
     //entrada dos dados da primeira carta
     printf("Vamos cadastrar a primeira carta!\n");
-    printf("Digite a letra do Estado: \n");
-    scanf("%s", estado1);
+    /*printf("Digite a letra do Estado: \n");
+    scanf("%s", estado1);*/
 
-    printf("Digite o código da carta: \n");
-    scanf("%s", codigo1);
+    /*printf("Digite o código da carta: \n");
+    scanf("%s", codigo1);*/
 
     printf("Digite o nome da cidade: \n");
     scanf("%s", cidade1);
@@ -54,11 +54,11 @@ int main (){
     //inserção dos dados para cadastro da CARTA 2:
 
     printf("Vamos cadastrar a CARTA 2!\n");
-    printf("Digite a letra do Estado: \n");
-    scanf("%s", estado2);
+    /*printf("Digite a letra do Estado: \n");
+    scanf("%s", estado2);*/
 
-    printf("Digite o código da carta: \n");
-    scanf("%s", codigo2);
+    /*printf("Digite o código da carta: \n");
+    scanf("%s", codigo2);*/
 
     printf("Digite o nome da cidade: \n");
     scanf("%s", cidade2);
@@ -86,7 +86,7 @@ int main (){
     printf("Densidade Populacional: %.2f hab./km²\nPIB per capita: %.2f reais\nSuper Poder Carta 2: %.2f\n", densidade2, pibpercapita2, superPoder2);
 
     //RESULTADO DA BATALHA DAS CARTAS COM CONDICAO IF ELSE:
-
+/*
     //condicional da população
     printf("***BATALHA DAS CARTAS***\n");
     printf("Comparação de cartas - ATRIBUTO: População\n");
@@ -165,4 +165,104 @@ int main (){
         printf("Resultado: Carta 2 (%s - %s) venceu!\n", cidade2, estado2);
     }
     return 0;
+*/
+    int atributo;
+
+    printf("***ESCOLHA O ATRIBUTO QUE QUER BATALHAR!***\n");
+    printf("1. População\n");
+    printf("2. Área\n");
+    printf("3. PIB\n");
+    printf("4. Número de pontos turísticos\n");
+    printf("5. Densidade demográfica\n");
+    scanf("%d", &atributo);
+
+    /*if(atributo < 1 || atributo > 5){
+        printf("Você digitou uma opção inválida!\n");
+        return 1;
+    }*/
+
+    switch (atributo)
+    {
+    case 1:
+        printf("***Batalha entre %s e %s\n", cidade1, cidade2);
+        printf("Você escolheu POPULAÇÃO para batalhar!\n");
+        printf("A população de %s é: %lu.\n",cidade1, populacao1);
+        printf("A população de %s é: %lu.\n",cidade2, populacao2);
+        if (populacao1 > populacao2){
+            printf("A Carta 1 venceu!\n");
+        }else if(populacao1 < populacao2){
+            printf("A Carta 2 venceu!\n");
+        }
+        else{
+            printf("Empatou!\n");
+        }
+        break;
+
+    case 2:
+        printf("***Batalha entre %s e %s\n", cidade1, cidade2);
+        printf("Você escolheu ÁREA para batalhar!\n");
+        printf("A área de %s é: %.2f.\n",cidade1, area1);
+        printf("A área de %s é: %.2f.\n",cidade2, area2);
+        if (area1 > area2){
+            printf("A Carta 1 venceu!\n");
+        }else if(area1 < area2){
+            printf("A Carta 2 venceu!\n");
+        }
+        else{
+            printf("Empatou!\n");
+        }
+        break;
+
+    case 3:
+        printf("***Batalha entre %s e %s\n", cidade1, cidade2);
+        printf("Você escolheu PIB para batalhar!\n");
+        printf("O PIB de %s é: %.2f.\n",cidade1, pib1);
+        printf("O PIB de %s é: %.2f.\n",cidade2, pib2);
+        if (pib1 > pib2){
+            printf("A Carta 1 venceu!\n");
+        }else if(pib1 < pib2){
+            printf("A Carta 2 venceu!\n");
+        }
+        else{
+            printf("Empatou!\n");
+        }
+        break;
+    
+    case 4:
+        printf("***Batalha entre %s e %s\n",  cidade1, cidade2);
+        printf("Você escolheu Número de pontos turísticos para batalhar!\n");
+        printf("O Número de pontos turísticos de %s é: %d.\n",cidade1, pontoturistico1);
+        printf("O Número de pontos turísticos de %s é: %d.\n",cidade2, pontoturistico2);
+        if (pontoturistico1> pontoturistico2){
+            printf("A Carta 1 venceu!\n");
+        }else if(pontoturistico1 < pontoturistico2){
+            printf("A Carta 2 venceu!\n");
+        }
+        else{
+            printf("Empatou!\n");
+        }
+        break;
+
+    case 5:
+        printf("***Batalha entre %s e %s\n",  cidade1, cidade2);
+        printf("Você escolheu Densidade Demográfica para batalhar!\n");
+        printf("O Densidade Demográfica de %s é: %.2f.\n",cidade1, densidade1);
+        printf("O Densidade Demográfica de %s é: %.2f.\n",cidade2, densidade2);
+        if (densidade1 < densidade2){
+            printf("A Carta 1 venceu!\n");
+        }else if(densidade1 > densidade2){
+            printf("A Carta 2 venceu!\n");
+        }
+        else{
+            printf("Empatou!\n");
+        }
+        break;
+
+    default:
+        printf("Você digitou uma opção inválida!\n");
+        break;
+    }
+
+    return 0;
+
 }
