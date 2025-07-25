@@ -3,7 +3,7 @@
 int main (){
     
     //variaveis da carta 1
-    char estado1[4], codigo1[5], cidade1[20];
+    char estado1, codigo1[5], cidade1[20];
     unsigned long int populacao1;
     float area1, pib1, densidade1, pibpercapita1;
     int pontoturistico1;
@@ -12,14 +12,14 @@ int main (){
     
     //entrada dos dados da primeira carta
     printf("Vamos cadastrar a primeira carta!\n");
-    /*printf("Digite a letra do Estado: \n");
-    scanf("%s", estado1);*/
+    printf("Digite a letra do Estado: \n");
+    scanf(" %c", &estado1);
 
-    /*printf("Digite o código da carta: \n");
-    scanf("%s", codigo1);*/
+    printf("Digite o código da carta: \n");
+    scanf("%s", codigo1);
 
     printf("Digite o nome da cidade: \n");
-    scanf("%s", cidade1);
+    scanf(" %19[^\n]", cidade1);
 
     printf("Digite a população desta cidade: \n");
     scanf("%lu", &populacao1);
@@ -27,25 +27,48 @@ int main (){
     printf("Digite a área em km²: \n");
     scanf("%f", &area1);
 
-    printf("Digite o PIB desta cidade: \n");
+    printf("Digite o PIB desta cidade em bilhões de reais: \n");
     scanf("%f", &pib1);
 
     printf("Digite o nº de pontos turísticos: \n");
     scanf("%d", &pontoturistico1);
     
-    //CALCULO DA DENSIDADE POPULACIONAL, PIB PER CAPITA E SUPER PODER DA CARTA 1: 
-    densidade1 = (float) populacao1 / area1;
-    pibpercapita1 = pib1 / (float) populacao1;
-    superPoder1 = populacao1 + area1 + pib1 + pontoturistico1 + pibpercapita1 + (1/densidade1);
+    //CALCULO DA DENSIDADE POPULACIONAL, PIB PER CAPITA E SUPER PODER DA CARTA 1:
+    //com ajustes para verificar se o denominador é diferente de zero
+    
+    //ajuste para densidade1:
+    if (area1 != 0){
+        densidade1 = (float) populacao1 / area1;
+    } else{
+        printf("Atenção! Área da Carta 1 é zero. A densidade populacional será definida com 0\n");
+    }
+
+     //ajuste para pibpercapita1:
+    
+    if (populacao1 != 0){
+        pibpercapita1 = (pib1 * 1000000000.0f) / (float) populacao1;
+    } else{
+        pibpercapita1 = 0.0f;
+        printf("Atenção! População da Carta 1 é zero. O PIB per capita será definido com 0\n");
+    }
+
+    //ajuste para o SuperPoder1:
+    float inversoDensidade1 = 1.0f/densidade1;
+    
+    if (densidade1 != 0.0f){
+        inversoDensidade1 = 1.0f/densidade1;
+    } 
+    superPoder1 = populacao1 + area1 + pib1 + pontoturistico1 + pibpercapita1 + inversoDensidade1;
+    
 
    //saída dos dados da primeira carta inseridos pelo usuário
-    printf("Carta 1:\nEstado: %s\nCódigo: %s\nNome da Cidade: %s\nPopulação: %.2lu habitantes\n",estado1,codigo1,cidade1,populacao1);
-    printf("Área: %.2f km²\nPIB: %.2f\nNúmero de Pontos Turísticos: %d\n",area1,pib1,pontoturistico1);
-    printf("Densidade Populacional: %.2f hab./km²\nPIB per capita: %.2f reais\nSuper Poder Carta 1: %.2f\n", densidade1, pibpercapita1, superPoder1);
+    printf("Carta 1:\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %lu habitantes\n",estado1,codigo1,cidade1,populacao1);
+    printf("Área: %.2f km²\nPIB: %.2f bilhões de reais\nNúmero de Pontos Turísticos: %d\n",area1,pib1,pontoturistico1);
+    printf("Densidade Populacional: %.2f hab./km²\nPIB per capita: %.2f reais/hab.\nSuper Poder Carta 1: %.2f\n", densidade1, pibpercapita1, superPoder1);
 
 
      //variaveis da carta 2
-    char estado2[4], codigo2[4], cidade2[20];
+    char estado2, codigo2[4], cidade2[20];
     unsigned long int populacao2;
     float area2, pib2, densidade2, pibpercapita2;
     int pontoturistico2;
@@ -54,14 +77,14 @@ int main (){
     //inserção dos dados para cadastro da CARTA 2:
 
     printf("Vamos cadastrar a CARTA 2!\n");
-    /*printf("Digite a letra do Estado: \n");
-    scanf("%s", estado2);*/
+    printf("Digite a letra do Estado: \n");
+    scanf(" %c", &estado2);
 
-    /*printf("Digite o código da carta: \n");
-    scanf("%s", codigo2);*/
+    printf("Digite o código da carta: \n");
+    scanf("%s", codigo2);
 
     printf("Digite o nome da cidade: \n");
-    scanf("%s", cidade2);
+    scanf(" %19[^\n]", cidade2);
 
     printf("Digite a população desta cidade: \n");
     scanf("%lu", &populacao2);
@@ -69,21 +92,43 @@ int main (){
     printf("Digite a área em km²: \n");
     scanf("%f", &area2);
 
-    printf("Digite o PIB desta cidade: \n");
+    printf("Digite o PIB desta cidade em bilhões de reais: \n");
     scanf("%f", &pib2);
 
     printf("Digite o nº de pontos turísticos: \n");
     scanf("%d", &pontoturistico2);
 
-    //CALCULO DA DENSIDADE POPULACIONAL, PIB PER CAPITA E SUPER PODER DA CARTA 2: 
-    densidade2 = (float) populacao2 / area2;
-    pibpercapita2 = pib2 / (float) populacao2;
-    superPoder2 = populacao2 + area2 + pib2 + pontoturistico2 + pibpercapita2 + (1/densidade2);
+    //CALCULO DA DENSIDADE POPULACIONAL, PIB PER CAPITA E SUPER PODER DA CARTA 2:
+    //com ajustes para verificar se o denominador é diferente de zero
+    
+    //ajuste para densidade2:
+    if (area2 != 0){
+        densidade2 = (float) populacao2 / area2;
+    } else{
+        printf("Atenção! Área da Carta 2 é zero. A densidade populacional será definida com 0\n");
+    }
+
+     //ajuste para pibpercapita2:
+    
+    if (populacao2 != 0){
+        pibpercapita2 = (pib2 * 1000000000.0f) / (float) populacao2;
+    } else{
+        pibpercapita2 = 0.0f;
+        printf("Atenção! População da Carta 2 é zero. O PIB per capita será definido com 0\n");
+    }
+
+    //ajuste para o SuperPoder2:
+    float inversoDensidade2 = 1.0f/densidade2;
+    
+    if (densidade2 != 0.0f){
+        inversoDensidade2 = 1.0f/densidade2;
+    } 
+    superPoder2 = populacao2 + area2 + pib2 + pontoturistico2 + pibpercapita2 + inversoDensidade2;
 
     //impressão na tela dos dados cadastrados da CARTA 2
-    printf("Carta 2:\nEstado: %s\nCódigo: %s\nNome da Cidade: %s\nPopulação: %.2lu habitantes\n",estado2,codigo2,cidade2,populacao2);
-    printf("Área: %.2f km²\nPIB: %.2f\nNúmero de Pontos Turísticos: %d\n",area2,pib2,pontoturistico2);
-    printf("Densidade Populacional: %.2f hab./km²\nPIB per capita: %.2f reais\nSuper Poder Carta 2: %.2f\n", densidade2, pibpercapita2, superPoder2);
+    printf("Carta 2:\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %lu habitantes\n",estado2,codigo2,cidade2,populacao2);
+    printf("Área: %.2f km²\nPIB: %.2f bilhões de reais\nNúmero de Pontos Turísticos: %d\n",area2,pib2,pontoturistico2);
+    printf("Densidade Populacional: %.2f hab./km²\nPIB per capita: %.2f reais/hab.\nSuper Poder Carta 2: %.2f\n", densidade2, pibpercapita2, superPoder2);
 
     //RESULTADO DA BATALHA DAS CARTAS COM CONDICAO IF ELSE:
 /*
